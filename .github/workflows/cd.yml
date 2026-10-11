@@ -33,7 +33,7 @@ jobs:
           DATABRICKS_CATALOG: ${{ secrets.DATABRICKS_CATALOG }}
         run: |
           liquibase \
-          --changelog-file=changelog/db.changelog-master.sql \
+          --changelog-file=changelog/db.changelog-master.xml \
           --url="jdbc:databricks://${DATABRICKS_HOST}:443/default;AuthMech=3;httpPath=${DATABRICKS_HTTP_PATH};ConnCatalog=${DATABRICKS_CATALOG};ConnSchema=default;UID=token;PWD=${DATABRICKS_TOKEN};" \
           validate
 
@@ -45,7 +45,7 @@ jobs:
           DATABRICKS_CATALOG: ${{ secrets.DATABRICKS_CATALOG }}
         run: |
           liquibase \
-          --changelog-file=changelog/db.changelog-master.sql \
+          --changelog-file=changelog/db.changelog-master.xml \
           --url="jdbc:databricks://${DATABRICKS_HOST}:443/default;AuthMech=3;httpPath=${DATABRICKS_HTTP_PATH};ConnCatalog=${DATABRICKS_CATALOG};ConnSchema=default;UID=token;PWD=${DATABRICKS_TOKEN};" \
           update
 
@@ -57,6 +57,6 @@ jobs:
           DATABRICKS_CATALOG: ${{ secrets.DATABRICKS_CATALOG }}
         run: |
           liquibase \
-          --changelog-file=changelog/db.changelog-master.sql \
+          --changelog-file=changelog/db.changelog-master.xml \
           --url="jdbc:databricks://${DATABRICKS_HOST}:443/default;AuthMech=3;httpPath=${DATABRICKS_HTTP_PATH};ConnCatalog=${DATABRICKS_CATALOG};ConnSchema=default;UID=token;PWD=${DATABRICKS_TOKEN};" \
           status --verbose
